@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-        const postsModel = new Schema({
+        const mongoModel = new Schema({
             title: {
                 type: String,
                 required: true,
@@ -12,4 +12,4 @@ import { Schema, model } from 'mongoose';
             }
         })
 
-        export default model('postsModel', postsModel);
+        export default model('mongoModel', mongoModel);
