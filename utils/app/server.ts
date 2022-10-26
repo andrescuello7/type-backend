@@ -1,6 +1,7 @@
 import express from "express";
 import { Settings } from "../settings/settings";
 import { DataService } from "../manager/data_services";
+import UserRoutes from "../../src/mysql/mysql_router";
 
 export class ServerApp {
     private settings: Settings;
@@ -10,6 +11,10 @@ export class ServerApp {
     constructor(private port: number) {
         this.settings = new Settings();
         this.connectDb = new DataService();
+    }
+
+    routes() {
+        this.app.use("/", UserRoutes)
     }
 
     listen() {

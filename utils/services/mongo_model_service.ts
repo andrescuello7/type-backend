@@ -1,4 +1,4 @@
-export class Models {
+export class MongoModels {
     async route(file: string) {
         return await
             `import { ${file}Controller } from './${file}_controller';

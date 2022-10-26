@@ -1,16 +1,20 @@
 import { createPool, Pool } from "mysql2/promise";
 
 export class MySqlConnection {
+    public db: Pool;
+
     constructor() {
         this.auth();
     }
-    private async auth() {
-        const connection : Pool = await createPool({
+
+    async auth() {
+        let response = await createPool({
             host: "localhost",
             user: "root",
             database: "typescript",
             connectionLimit: 10
         })
-        console.log(connection)
+        this.db = await response;
+        console.log("mysql connection")
     }
 }
