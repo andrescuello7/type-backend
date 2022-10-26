@@ -1,13 +1,15 @@
 import express from "express";
 import { Settings } from "../settings/settings";
-import { methods } from "../enum/enum_method";
+import { DataService } from "../manager/data_services";
 
 export class ServerApp {
     private settings: Settings;
+    private connectDb: DataService;
     private app = express();
 
     constructor(private port: number) {
         this.settings = new Settings();
+        this.connectDb = new DataService();
     }
 
     listen() {
