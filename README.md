@@ -1,12 +1,14 @@
-# FrameMake 
+# 🏮 FrameMake 
 
-![Logo](https://www.creativefabrica.com/wp-content/uploads/2020/07/22/Black-Ribbon-Graphics-4688919-1-580x386.jpg)
+![Logo](https://elinux.org/images/thumb/e/ee/Arrayfire_logo_symbol.png/300px-Arrayfire_logo_symbol.png)
 
-This is a backend framework with features to automate the creation of programs
+
+## 🚀 About Me
+I'm a full stack developer...
 
 ## Description
 
-[Count](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Count](https://github.com/nestjs/nest) This is a backend framework with features to automate the creation of programs.
 
 ## Installation
 
@@ -20,27 +22,20 @@ $ npm install
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
 # production mode
-$ npm run start:prod
+$ npm start
+
+# development
+$ npm run dev
+
 ```
 
-## Test
+## Model
 
 ```bash
-# unit tests
-$ npm run test
+# create model
+$ npm run file
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 
