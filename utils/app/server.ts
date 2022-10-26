@@ -1,7 +1,7 @@
 import express from "express";
 import { Settings } from "../settings/settings";
 import { DataService } from "../manager/data_services";
-import UserRoutes from "../../src/mysql/mysql_router";
+import MySQLqlRoutes from "../../src/posts/posts_router";
 
 export class ServerApp {
     private settings: Settings;
@@ -14,7 +14,7 @@ export class ServerApp {
     }
 
     routes() {
-        this.app.use("/", UserRoutes)
+        this.app.use("/", MySQLqlRoutes)
     }
 
     listen() {

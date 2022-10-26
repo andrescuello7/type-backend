@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-        const mysqlModel = new Schema({
+        const postsModel = new Schema({
             title: {
                 type: String,
                 required: true,
@@ -12,4 +12,4 @@ import { Schema, model } from 'mongoose';
             }
         })
 
-        export default model('mysqlModel', mysqlModel);
+        export default model('postsModel', postsModel);

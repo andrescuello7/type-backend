@@ -7,10 +7,10 @@ const input = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
+const mongoModels = new MongoModels();
+const mysqlModels = new MySqlModels();
 
 const fileService = () => {
-    const mongoModels = new MongoModels();
-    const mysqlModels = new MySqlModels();
 
     console.log("Created new Model \n")
     console.log("[1] MongoDb name_file \n[2] MySql name_file \n")
@@ -33,8 +33,10 @@ const fileService = () => {
 
 const createModel = (file, model) => {
     fs.mkdir(`./src/${file}/`, async () => {
+        if (model == mongoModels) {
+            fs.writeFile(`./src/${file}/${file}_model.ts`, await model.model(file), () => { })
+        }
         fs.writeFile(`./src/${file}/${file}_router.ts`, await model.route(file), () => { })
-        fs.writeFile(`./src/${file}/${file}_model.ts`, await model.model(file), () => { })
         fs.writeFile(`./src/${file}/${file}_controller.ts`, await model.controller(file), () => { process.exit(0) })
     })
 }
