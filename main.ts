@@ -1,4 +1,4 @@
-import { ServerApp } from "./utils/app/server";
+import { ServerApp } from "./src";
 require("dotenv").config();
 
 async function main() {
