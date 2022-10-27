@@ -1,9 +1,9 @@
 import express from "express";
-import { DataService } from "../utils/manager/data_services";
 import bodyParser from 'body-parser'
 import MySqlRoutes from "./mysql/mysql_router";
 import MongoRoutes from "./mongo/mongo_router";
 
+import { DataService } from "../utils/manager/data_services";
 export class ServerApp {
     private app = express();
 
