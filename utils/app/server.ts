@@ -1,21 +1,26 @@
 import express from "express";
-import { Settings } from "../settings/settings";
 import { DataService } from "../manager/data_services";
-import MySQLRoutes from "../../src/mysql/mysql_router";
+import bodyParser from 'body-parser'
+import MySqlRoutes from "../../src/mysql/mysql_router";
 import MongoRoutes from "../../src/mongo/mongo_router";
 
 export class ServerApp {
-    private settings: Settings;
-    private connectDb: DataService;
     private app = express();
 
     constructor(private port: number) {
-        this.settings = new Settings();
-        this.connectDb = new DataService();
+        new DataService();
+    }
+
+    settings() {
+        this.app.set('port', process.env.PORT || 3000);
+        this.app.use(bodyParser.urlencoded({ extended: false }))
+        this.app.use(express.json());
+        this.app.use(bodyParser.json())
     }
 
     routes() {
-        this.app.use("/", MongoRoutes)
+        this.app.use("/api/mongo", MongoRoutes)
+        this.app.use("/api/mysql", MySqlRoutes)
     }
 
     listen() {

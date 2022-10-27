@@ -8,7 +8,7 @@ CREATE TABLE users(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO users(title, description, image_url) values ("Andres", "Cuello", "https://twitter.com/")
+INSERT INTO users(title, description, image_url) values ("Name", "LastName", "https://twitter.com/")
 
 INSERT INTO users SET ?
 

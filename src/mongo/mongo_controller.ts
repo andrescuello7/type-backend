@@ -1,35 +1,30 @@
 import mongoModel from "./mongo_model";
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 
 export class mongoController {
-    public async getMongo(req: Request, res: Response) {
+    async getMongo(req: Request, res: Response) {
         const response = await mongoModel.find();
         res.send(response);
     }
 
-    public async postMongo(req: Request, res: Response) {
-        try {
-            console.log(req.body)
-            // const response = new mongoModel({
-            //     ...req.body,
-            //     CreateAdd: Date.now(),
-            // });
-            // res.send(response);
-            // const create = await response.save();
-            // res.status(200).send(create);
-        } catch (e) {
-            console.log(e)
-        }
+    async postMongo(req: Request, res: Response) {
+        const model = new mongoModel({
+            ...req.body,
+            CreateAdd: Date.now(),
+        });
+        const response = await model.save();
+        res.status(200).send(response);
     }
 
-    public async putMongo(req: Request, res: Response) {
-
+    async putMongo(req: Request, res: Response) {
+        const { id } = req.params;
+        const response = await mongoModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
+        res.status(200).send(response);
     }
 
-    public async deleteMongo(req: Request, res: Response) {
-
+    async deleteMongo(req: Request, res: Response) {
+        const { id } = req.params;
+        const response = await mongoModel.findById(id);
+        res.status(200).send(response);
     }
 }
-
-// curl -X POST https://localhost:3000 -H 'Content-Type: application/json' -d '{"title":"Andres","description":"Cuello Villafane", "image": "https://twitter.com/"}'
-   

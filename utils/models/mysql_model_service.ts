@@ -28,12 +28,23 @@ export class MySqlModels {
                 }
             
                 async post${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
+                    let connect = await connectMysql();
+                    const response = await connect.query('INSERT INTO users set ?', req.body);
+                    res.send(response[0]);
                 }
             
                 async put${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
+                    const { id } = req.params;
+                    let connect = await connectMysql();
+                    const response = await connect.query('UPDATE users set ? where id = ?', [req.body, id]);
+                    res.send(response[0]);
                 }
             
                 async delete${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
+                    const { id } = req.params;
+                    let connect = await connectMysql();
+                    const response = await connect.query('DELETE FROM users WHERE id = ?', [id]);
+                    res.send(response[0]);
                 }
             }`
     }

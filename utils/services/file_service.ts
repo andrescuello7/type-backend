@@ -31,7 +31,7 @@ const fileService = () => {
     })
 }
 
-const createModel = (file, model) => {
+const createModel = (file: string, model: any) => {
     fs.mkdir(`./src/${file}/`, async () => {
         if (model == mongoModels) {
             fs.writeFile(`./src/${file}/${file}_model.ts`, await model.model(file), () => { })
