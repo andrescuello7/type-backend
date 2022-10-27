@@ -7,12 +7,12 @@ import { DataService } from "../utils/manager/data_services";
 export class ServerApp {
     private app = express();
 
-    constructor(private port: number) {
+    constructor(private port?: number) {
         new DataService();
     }
 
     settings() {
-        this.app.set('port', process.env.PORT || 3000);
+        this.app.set('port', process.env.PORT || this.port || 3000);
         this.app.use(bodyParser.urlencoded({ extended: false }))
         this.app.use(express.json());
         this.app.use(bodyParser.json())
