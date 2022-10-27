@@ -1,7 +1,7 @@
 import fs from "fs";
 import readline from "readline";
-import { MongoModels } from "./mongo_model_service";
-import { MySqlModels } from "./mysql_model_service";
+import { MongoModels } from "../models/mongo_model_service";
+import { MySqlModels } from "../models/mysql_model_service";
 
 const input = readline.createInterface({
     input: process.stdin,

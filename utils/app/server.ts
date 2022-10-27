@@ -2,6 +2,7 @@ import express from "express";
 import { Settings } from "../settings/settings";
 import { DataService } from "../manager/data_services";
 import MySQLRoutes from "../../src/mysql/mysql_router";
+import MongoRoutes from "../../src/mongo/mongo_router";
 
 export class ServerApp {
     private settings: Settings;
@@ -14,7 +15,7 @@ export class ServerApp {
     }
 
     routes() {
-        this.app.use("/", MySQLRoutes)
+        this.app.use("/", MongoRoutes)
     }
 
     listen() {

@@ -6,8 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start": "node ./public/main.js",
-    "dev": "ts-node ./main.ts",
+    "start": "ts-node ./public/main.js",
+    "dev": "nodemon ./main.ts",
     "file": "ts-node ./utils/services/file_service.ts"
   },
   "dependencies": {
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/mongoose": "^5.11.97",
-    "@types/node": "^18.11.5",
+    "@types/node": "^18.11.7",
     "mongoose": "^6.7.0",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",

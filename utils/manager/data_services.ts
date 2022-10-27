@@ -5,7 +5,7 @@ export class DataService {
     public connection: any;
     
     constructor() {
-        this.connection = new MySqlConnection()
-        // this.connection = new MongoDbConnection()
+        // this.connection = new MySqlConnection()
+        this.connection = new MongoDbConnection()
     }
 }
