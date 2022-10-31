@@ -6,7 +6,7 @@ const controller = new mysqlController();
 
 router.get('/', controller.getMysql);
 router.post('/', controller.postMysql);
-router.put('/:idPost', controller.putMysql);
-router.delete('/:idPost', controller.deleteMysql);
+router.put('/:id', controller.putMysql);
+router.delete('/:id', controller.deleteMysql);
 
 export default router;
