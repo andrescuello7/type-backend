@@ -25,8 +25,8 @@ export class App {
     }
 
     listen() {
-        this.app.listen(this.port, () => {
-            console.log("server listening on", this.port);
+        this.app.listen(this.app.get('port'), () => {
+            console.log("server listening on", this.app.get('port'));
         })
     }
 }
