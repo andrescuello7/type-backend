@@ -12,11 +12,12 @@ export class MySqlConnection {
 }
 
 export const connectMysql = async () => {
-    let response = await createPool({
+    let response = createPool({
         host: `${process.env.HOST_DB}`,
         user: `${process.env.USER_MS}`,
         password: `${process.env.PASSWORD_MS}`,
         database: `${process.env.NAME_DB}`,
+        port: 8004,
         connectionLimit: 10
     })
     return response;
