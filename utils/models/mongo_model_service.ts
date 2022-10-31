@@ -16,35 +16,56 @@ export class MongoModels {
     }
 
     async controller(file: string) {
+        let fullName = file[0].toUpperCase() + file.slice(1);
         return await
             `import ${file}Model from "./${file}_model";
             import { Request, Response } from 'express';
             
             export class ${file}Controller {
-                async get${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
-                    const response = await ${file}Model.find();
-                    res.send(response);
+                async get${fullName}(req: Request, res: Response) {
+                    try {
+                        const response = await ${file}Model.find();
+                        res.send(response);
+                    } catch (error) {
+                        console.log(error);
+                        res.status(400).send("error in method get");
+                    }
                 }
             
-                async post${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
-                    const model = new ${file}Model({
-                        ...req.body,
-                        CreateAdd: Date.now(),
-                    });
-                    const response = await model.save();
-                    res.status(200).send(response);
+                async post${fullName}(req: Request, res: Response) {
+                    try {
+                        const model = new ${file}Model({
+                            ...req.body,
+                            CreateAdd: Date.now(),
+                        });
+                        const response = await model.save();
+                        res.status(200).send(response);
+                    } catch (error) {
+                        console.log(error);
+                        res.status(400).send("error in method post");
+                    }
                 }
             
-                async put${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
+                async put${fullName}(req: Request, res: Response) {
                     const { id } = req.params;
-                    const response = await ${file}Model.findOneAndUpdate({ _id: id }, req.body, { new: true });
-                    res.status(200).send(response);
+                    try {
+                        const response = await ${file}Model.findOneAndUpdate({ _id: id }, req.body, { new: true });
+                        res.status(200).send(response);
+                    } catch (error) {
+                        console.log(error);
+                        res.status(400).send("error in method put");
+                    }
                 }
             
-                async delete${file[0].toUpperCase() + file.slice(1)}(req: Request, res: Response) {
+                async delete${fullName}(req: Request, res: Response) {
                     const { id } = req.params;
-                    const response = await ${file}Model.findById(id);
-                    res.status(200).send(response);
+                    try {
+                        const response = await ${file}Model.findByIdAndRemove(id);
+                        res.status(200).send(response);
+                    } catch (error) {
+                        console.log(error);
+                        res.status(400).send("error in method delete");
+                    }
                 }
             }`
     }

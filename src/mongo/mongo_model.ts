@@ -6,6 +6,14 @@ const mongoModel = new Schema({
         required: true,
         tim: true
     },
+    description: {
+        type: String,
+        tim: true
+    },
+    image_url: {
+        type: String,
+        tim: true
+    },
     CreateAdd: {
         type: Date,
         default: Date.now()
